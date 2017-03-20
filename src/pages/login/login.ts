@@ -35,20 +35,21 @@ export class LoginPage {
   }
 
   setLogin() {
-    // this.auth.login(this.registerCredentials).subscribe(allowed => {
-    //   if (allowed) {
-    //       setTimeout(() => {
-    //         this.navCtrl.setRoot(HomePage);
-    //       });
-    //     } else {
-    //       let toast = this.toastCtrl.create({
-    //         message: 'Login Failed. Credentials did not match',
-    //         duration: 3000,
-    //         cssClass: "toast-login-failed"
-    //       });
-    //       toast.present();
-    //     }
-    //   }
+    console.log(this.auth.login(this.registerCredentials));
+      // .subscribe(allowed => {
+      // if (allowed) {
+      //     setTimeout(() => {
+      //       this.navCtrl.setRoot(HomePage);
+      //     });
+      //   } else {
+      //     let toast = this.toastCtrl.create({
+      //       message: 'Login Failed. Credentials did not match',
+      //       duration: 3000,
+      //       cssClass: "toast-login-failed"
+      //     });
+      //     toast.present();
+      //   }
+      // }
     // );
   }
 }

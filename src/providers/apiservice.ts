@@ -24,7 +24,8 @@ export class Apiservice {
     // We're using Angular HTTP provider to request the data,
     // then on the response, it'll map the JSON data to a parsed JS object.
     // Next, we process the data and resolve the promise with the new data.
-    this.http.get('https://randomuser.me/api/?results=10')
+    // https://pcceduportal.com/modules/a_template/AppData/app_login
+    this.http.get('https://randomapi.com/api/8c46783526f492b20c9bb3b2a4f039be?results=10')
       .map(res => res.json())
       .subscribe(data => {
         this.data = data.results;
