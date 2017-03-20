@@ -1,0 +1,30 @@
+<ion-menu [content]="content" id="sidemenu" width="100">
+  <ion-content width="100">
+    <div user-header>
+      <div col-sm-4>
+        <img src="img/pcclogo.png">
+      </div>
+      <div col-sm-8 style="vertical-align: top; padding-top: 15px; font-size: 15px;">
+        Hi, <label class="label"><b color="pcc">{{name}}</b></label>! <br>
+        <b>Course level</b>
+      </div>
+    </div>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <i class="{{p.ficon}}"></i> {{p.title}}
+      </button>
+      <div class="extra-navs">
+        <div col-sm-6 text-left>
+          <button menuClose ion-item><i class="fa fa-gear"></i> Settings</button>
+        </div>
+        <div col-sm-6 text-right>
+          <button menuClose ion-item (click)="logout()"><i class="fa fa-sign-out"></i> Log out</button>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

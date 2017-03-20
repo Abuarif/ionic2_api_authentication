@@ -1,0 +1,32 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content scroll="false">
+  <div class="div-index">
+    <div class="div-logo" text-center><img src="img/pcclogo.png"></div>
+    <div class="div-form">
+      <form [formGroup]="login_cred" (ngSubmit)="setLogin()">
+
+        <ion-list>
+
+          <ion-item>
+            <ion-label ion-text color="placeholder" floating>UserName</ion-label>
+            <ion-input type="text" [(ngModel)]="registerCredentials.username" formControlName="username"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label ion-text color="placeholder" floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="registerCredentials.password" formControlName="password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <br>
+        <button btn-grn ion-button block type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</ion-content>
