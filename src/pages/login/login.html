@@ -14,12 +14,12 @@
 
           <ion-item>
             <ion-label ion-text color="placeholder" floating>UserName</ion-label>
-            <ion-input type="text" [(ngModel)]="registerCredentials.username" formControlName="username"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.username" formControlName="username"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label ion-text color="placeholder" floating>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="registerCredentials.password" formControlName="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="data.password" formControlName="password"></ion-input>
           </ion-item>
 
         </ion-list>
@@ -28,5 +28,15 @@
         <button btn-grn ion-button block type="submit">Sign In</button>
       </form>
     </div>
+    <ion-card>
+        <ion-card-header>
+            Response
+        </ion-card-header>
+        
+        <ion-card-content>
+            <b>{{data.response}}</b>
+        </ion-card-content>
+    </ion-card>
   </div>
+  
 </ion-content>

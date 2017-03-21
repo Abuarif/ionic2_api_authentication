@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController,ToastController, MenuController} from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
+import {Http} from '@angular/http';
 import { Authservice } from '../../providers/authservice';
 
 /*
@@ -17,11 +18,12 @@ import { Authservice } from '../../providers/authservice';
 })
 export class LoginPage {
   private login_cred: FormGroup;
+  public data;
   registerCredentials = { username: '', password: '' };
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private formBuilder: FormBuilder, public toastCtrl: ToastController, private alertCtrl: AlertController,
-              public menuCtrl: MenuController, private auth: Authservice) {
+              public menuCtrl: MenuController, private auth: Authservice, public http:Http) {
     // if (this.auth.checkLocal() == true) {
     //     setTimeout(() => {
     //       this.navCtrl.setRoot(DashboardPage);  
@@ -32,10 +34,17 @@ export class LoginPage {
         username: [''],
         password: ['']
       });
+    
+        this.data = {};
+        this.data.username = '';
+        this.data.response = '';
+
+        this.http = http;
   }
 
   setLogin() {
-    console.log(this.auth.login(this.registerCredentials));
+    
+    console.log(this.auth.login(this.data));
       // .subscribe(allowed => {
       // if (allowed) {
       //     setTimeout(() => {

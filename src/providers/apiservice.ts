@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import  CryptoJS  from 'crypto-js';
 
 /*
   Generated class for the Apiservice provider.
@@ -13,25 +14,32 @@ export class Apiservice {
   public data;
   constructor(public http: Http) {}
 
-  load() {
-  if (this.data) {
-    // already loaded data
-    return Promise.resolve(this.data);
-  }
+  load(credentials) {
 
-  // don't have the data yet
-  return new Promise(resolve => {
-    // We're using Angular HTTP provider to request the data,
-    // then on the response, it'll map the JSON data to a parsed JS object.
-    // Next, we process the data and resolve the promise with the new data.
-    // https://pcceduportal.com/modules/a_template/AppData/app_login
-    this.http.get('https://randomapi.com/api/8c46783526f492b20c9bb3b2a4f039be?results=10')
-      .map(res => res.json())
-      .subscribe(data => {
-        this.data = data.results;
-        resolve(this.data);
-      });
-  });
+    // POST API
+      var link = 'https://www.sh.pcceduportal.com/api/test?username=' + credentials.username + '&password=' + credentials.password;
+      var data = JSON.stringify({ username: credentials.username, password: CryptoJS.SHA256(credentials.password).toString() });
+          
+      this.http.post(link, data)
+        .subscribe(data => {
+          credentials.response = data["_body"];
+        }, error => {
+            credentials.response = "Oooops!";
+        });
+    
+    // GET API
+      // if (this.data) {
+      //   return Promise.resolve(this.data);
+      // }
+
+      // return new Promise(resolve => {
+      //   this.http.get('https://www.sh.pcceduportal.com/api/test') // https://randomapi.com/api/8c46783526f492b20c9bb3b2a4f039be?results=10
+      //     .map(res => res.json())
+      //     .subscribe(data => {
+      //       this.data = data.results;
+      //       resolve(this.data);
+      //     });
+      // });
 }
 
 }
